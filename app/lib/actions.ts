@@ -1,11 +1,7 @@
-// /app/lib/actions.ts
-
 "use server";
 
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
-
-// ...
 
 export async function authenticate(
   prevState: string | undefined,
@@ -17,9 +13,9 @@ export async function authenticate(
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return "Invalid credentials.";
+          return "Invalid credentials. Please check your email and password.";
         default:
-          return "Something went wrong.";
+          return "Something went wrong. Please try again later.";
       }
     }
     throw error;
